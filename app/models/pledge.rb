@@ -1,7 +1,8 @@
 class Pledge < ApplicationRecord
   belongs_to :user
   belongs_to :reward
-  has_one :project, through: :reward
+  # has_one :project, through: :reward
+  belongs_to :project
 
   validate :enough_pledged
   validates_presence_of :dollar_amount

@@ -17,6 +17,7 @@
 
       <nav class="site-nav">
         <% if current_user %>
+        <p class="welcome"> <%=  current_user.first_name %>
           <%= link_to "Logout", :logout, method: :post %>
         <% else %>
           <%= link_to "Register", new_user_path %> |
@@ -28,6 +29,7 @@
     <% flash.each do |key, message| %>
       <div class="flash-<%= key %>"><%= message %></div>
     <% end %>
+
 
     <main>
       <%= yield %>
