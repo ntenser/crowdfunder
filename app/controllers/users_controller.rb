@@ -6,9 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+       flash[:notice] = "Signed up!"
       auto_login(@user)
       redirect_to projects_url
     else
+      flash.now[:error] = 'Sorry, try again!'
       render 'new'
     end
   end
