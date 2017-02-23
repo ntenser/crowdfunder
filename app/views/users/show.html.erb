@@ -5,25 +5,20 @@
 
 
 
-  <% @owned.each do |project| %>
+  <% @owned.each do |owned| %>
+    <h1><%= owned.title%></h1>
+    <div class="project-description"><%= owned.description %></div>
+    <div class="project-goal">Goal: <%= number_to_currency(owned.goal) %></div>
+    <div class="project-raised">Raised: <%= number_to_currency(owned.pledges.sum(:dollar_amount)) %></div>
+
+
+  <% end %>
+
+  <% @projects.each do |project| %>
     <h1><%= project.title%></h1>
-    <div class="project-description"><%= project.description %></div>
-    <div class="project-goal">Goal: <%= number_to_currency(project.goal) %></div>
-    <div class="project-raised">Raised: <%= number_to_currency(project.pledges.sum(:dollar_amount)) %></div>
-
-
+    <% project.rewards.each do |reward| %>
+      <% reward.pledges.where(user_id: current_user).each do |pledge| %>
+        <p>$ <%= pledge.dollar_amount%> Reward:  <%= pledge.reward.description%></p>
+      <%end%>
+    <% end %>
   <% end %>
-
-
-
-
-
-
-<% @projects.each do |project| %>
-  <h1><%= project.title%></h1>
-  <% project.rewards.each do |reward| %>
-    <% reward.pledges.where(user_id: @user.id).each do |pledge| %>
-      <p>$ <%= pledge.dollar_amount%> Reward:  <%= pledge.reward.description%></p>
-    <%end%>
-  <% end %>
-<% end %>

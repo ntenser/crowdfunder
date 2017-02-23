@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :projects
+  has_many :backed_projects, -> { order('title ASC').uniq }, through: :pledges, class_name: Project, source: :project
   has_many :pledges
 
 

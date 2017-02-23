@@ -23,12 +23,8 @@ class UsersController < ApplicationController
     end
 
     @owned = current_user.projects
-    @pledges = Pledge.where(user_id: params[:id])
-    @pledges.each do |pledge|
-      @projects << pledge.reward.project
-    end
-
-
+    @pledges = Pledge.where(user_id: current_user)
+    @projects = @user.backed_projects
   end
 
   private
