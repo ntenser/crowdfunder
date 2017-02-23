@@ -28,8 +28,6 @@ gem 'sorcery'
 
 # Dynamically create nested objects in forms
 gem "cocoon"
-gem 'pg_search'
-
 
 gem 'coffee-rails'
 # Scalable vector icon pack
