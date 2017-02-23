@@ -20,6 +20,7 @@
       <nav class="site-nav">
         <% if current_user %>
           Hello <%= current_user.first_name %>
+          <%= link_to "My Account", current_user %>
           <%= link_to "Logout", :logout, method: :post %>
 
         <% else %>

@@ -15,6 +15,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @projects = []
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to current_user
+    end
+
+    @owned = current_user.projects
+    @pledges = Pledge.where(user_id: params[:id])
+    @pledges.each do |pledge|
+      @projects << pledge.reward.project
+    end
+
+
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
