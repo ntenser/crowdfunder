@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Authentication and authorization
 gem 'sorcery'
 
+gem 'cancancan'
+
 # Dynamically create nested objects in forms
 gem "cocoon"
 

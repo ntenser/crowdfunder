@@ -18,7 +18,7 @@
       <h1 class="logo"><%= link_to "Crowdfunder", root_path %></h1>
 
       <nav class="site-nav">
-        <% if current_user %>
+        <% if current_user %> 
           Hello <%= current_user.first_name %>
           <%= link_to "Logout", :logout, method: :post %>
 

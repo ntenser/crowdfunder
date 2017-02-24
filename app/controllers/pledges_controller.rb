@@ -1,7 +1,12 @@
 class PledgesController < ApplicationController
   before_action :require_login
+  load_and_authorize_resource
 
   def create
+
+ # if @project.end_date < Datetime.now
+  
+  #  redirect_to root_path
     @pledge = Pledge.new(pledge_params)
     @pledge.user = current_user
     @pledge.reward = Reward.find(params[:reward_id])
@@ -13,6 +18,7 @@ class PledgesController < ApplicationController
       render 'projects/show'
     end
   end
+
 
   private
 
